@@ -6,13 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The Call of Asheron is an epic fantasy novel (~95k words, 186 pages) written in LaTeX. Four protagonists are transported from Ispar to the alien world of Dereth, where lifestones grant immortality at the cost of accumulating death-trauma. The novel explores forced migration, consciousness, transformation, and what survival costs.
 
-**Status**: Complete draft, revised December 2024. Focus on trusting readers, showing rather than telling.
+**Status**: Complete manuscript. Revised Dec 2024 (trust readers, show don't tell), Feb 2025 (repetition sweep, volume balance, expansions). Focus on trusting readers, showing rather than telling.
 
 ## Building
 
 ```bash
 pdflatex the_call_of_asheron.tex
 pdflatex the_call_of_asheron.tex  # Run twice for TOC
+
+# Clean auxiliary files if needed
+rm -f *.aux *.log *.toc *.out
 ```
 
 ## Document Structure
@@ -92,22 +95,54 @@ Always italicized: `\emph{We observe.}`
 - Archetype labels in narration ("the Scholar," "the Commander")
 - Distant future epilogues that flatten characters to allegorical functions
 
-## Recent Revisions (Dec 2024)
+## Document Roles
 
-### Trust Readers More
-- Cut Virindi omniscient exposition section (~73 lines) that told readers what characters thought
-- Cut "One Hundred Years Hence" epilogue that reduced characters to labels
-- Removed narrator archetype labeling; show through physical action instead
+| Role | File | Purpose |
+|------|------|---------|
+| **Manuscript** | `the_call_of_asheron.tex` | The novel. LaTeX source, single file. |
+| **Timeline Authority** | `docs/timeline.md` | Authoritative chronological reference. All "when" questions answered here. |
+| **Character Tracking** | `docs/characters.md` | Voice patterns, arc trajectories, emotional flickers, relationships. |
+| **Lore/History** | `docs/lore.md` | The Mechanism, Three Failed Paths, Matriarch origin, Empyrean history, Virindi origin. |
+| **Systems/Mechanics** | `docs/systems.md` | Magic-as-interface, ley lines, lifestones, hive architecture, Harbinger Protocol, geography. |
+| **Themes/Anti-Cliche** | `docs/themes.md` | Core themes, genre avoidances, deliberate patterns (don't "fix" these). |
+| **Style Conventions** | `docs/style.md` | LaTeX formatting, POV rules, prose principles, repetition management. |
+| **Outline/Diagnostic** | `docs/outline.md` | Chapter-by-chapter breakdown, thread tracking, volume balance, character appearances. |
+| **Editorial Backlog** | `docs/backlog.md` | Deferred ideas, continuity items, completed revisions log. |
+| **Worldbuilding Design** | `WORLDBUILDING_DESIGN.md` | Original comprehensive design document (~900 lines). Lore and systems docs are extracted from this; it remains as deep reference. |
 
-### Deepened Characterization
-- **Matriarch**: Added sympathetic framing—she's seeking understanding, not just conquering
-- **Thomas-Virindi**: Echo of longing theme in final scene; they've both changed
-- **Voice differentiation**: Restored distinct voices in final confrontation
+### Canonical Hierarchy
 
-### Worldbuilding Document
-See `WORLDBUILDING_DESIGN.md` for detailed background on:
-- Olthoi hive structure and Matriarch's tragedy
-- Virindi origin (the Keth'ra) and what they lost
-- Empyrean history and the Consensus
-- Harbinger Protocol psychological selection mechanics
-- Crystalline ecology and Isparian cultures
+1. **Manuscript** — ground truth for what the story says
+2. **Timeline** — authoritative for sequencing and duration claims
+3. **Characters** — authoritative for voice patterns and arc state
+4. **Lore, Systems** — authoritative for world facts
+5. **Style, Themes** — authoritative for editorial decisions
+6. **Outline** — diagnostic tool, not authoritative (reflects manuscript, doesn't drive it)
+7. **Backlog** — holding pen, nothing here is canonical until promoted
+
+### Propagation Notes
+
+- **Timeline ↔ Characters:** Tightly coupled — death counts, transformation milestones, and "when they know what" depend on both. Check both when either changes.
+- **Lore ↔ Systems:** Lore owns history and motivation; Systems owns mechanics. The Matriarch's origin is lore; her hive architecture is systems.
+- **Style ↔ Themes:** Themes drive what to avoid; Style implements the rules. "No archetype labels" is a theme commitment; "use names not roles" is a style rule.
+- **Outline → Everything:** The outline cross-references all docs. Update it when the manuscript changes significantly.
+- **WORLDBUILDING_DESIGN.md:** Read-only reference. If new worldbuilding is needed, add to lore/systems docs, not this file.
+
+## Recent Revisions
+
+### Feb 2025 Editorial Pass
+- Repetition sweep: "the particular" 29→9, "cosmic joke" 28→16, "forty-three years" 10→2
+- Ch 9 "Echoes" compression (~190 lines cut — removed recap of already-shown material)
+- Marcus redundancy compression (identity-through-duty internal monologue)
+- Final Battle: Day headers removed, transitional scenes added (~80 lines)
+- Matriarch Confrontation expanded (~80 lines)
+- Resolution section enhanced
+- Worldsmith documentation ecosystem created (docs/ directory)
+
+### Dec 2024 Revision
+- Cut Virindi omniscient exposition (~73 lines)
+- Cut "One Hundred Years Hence" epilogue
+- Removed narrator archetype labeling
+- Added Matriarch sympathetic framing
+- Restored Thomas-Virindi longing theme
+- Voice differentiation in final confrontation
